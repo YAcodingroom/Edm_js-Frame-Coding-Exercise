@@ -1,0 +1,252 @@
+body {
+    font-family: "微軟正黑體", sans-serif;
+    overflow-x: hidden;
+}
+a {
+    text-decoration: none;
+}
+img {
+    width: 100%;
+}
+
+/* banner */
+header, header div {
+    height: 100vh; /* view height 視窗高度 */ /* vw = view width 視窗寬度 */
+}
+.bg-img {
+    background-size: cover; /* 等比例填滿框架 */
+    background-position: center;
+    background-repeat: no-repeat; /* 不重複排列 */
+}
+header div {
+    background-color: #ffffff80;
+    padding-top: 25vh;
+    padding-right: 4.5vw;
+    line-height: 2;
+    clip-path: inset(5% 20% 15% 10%);
+}
+h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    color: #776d58;
+    text-shadow: 0 2px 0 #fff; /* 文字陰影－水平位移 垂直位移 模糊 陰影顏色 */
+}
+header span {
+    font-size: 1.5rem;
+    color: #49402d;
+}
+
+/* 主要內容 */
+main .bg-charcoal {
+    background-color: #2f4858;
+}
+
+/* 介紹內容 */
+.content-txt {
+    line-height: 2;
+    color: #fff;
+}
+h2 {
+    font-size: 2rem;
+    line-height: 1.5;
+}
+.content-txt p {
+    font-size: 1.2rem;
+}
+/* 展覽 */
+.main-ex .d-table-cell {
+    padding: 7rem 2rem;
+    line-height: 2;
+    overflow: hidden;
+}
+.bg-img.ps-a {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.mask {
+    background-color: #ffffff80;
+    top: 60px;
+    right: 60px;
+    bottom: 60px;
+    left: 60px;
+    border-radius: 15px;
+    /* border-top-right-radius: 0; */
+}
+.mask~* {
+    /* ~表示下方的相鄰元素 *表示全部元素 */
+    position: relative;
+    text-align: center;
+    margin: 0 70px;
+}
+.main-ex h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2f4858;
+    line-height: 1.8;
+}
+.main-ex p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #000000;
+    padding: 0 2rem;
+}
+.btn {
+    font-size: 0.9rem;
+    color: #000000;
+    background-color: #fff;
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+.btn-border {
+    border: 3px solid #f26419;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.6);
+}
+footer br {
+    display: none;
+}
+footer {
+    background-color: #fff;
+    color: #2f4858;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+.d-table-cell:hover .mask {
+    transform: scale(0.95);
+    border-radius: 5px;
+}
+.d-table-cell * {
+    transition: 0.6s;
+}
+.d-table-cell:hover *:not(.mask) {
+    transform: scale(1.05);
+}
+/* 線框動態 */
+.btn:hover {
+    background-color: #4e617e;
+    color: #fff;
+    border-color: #4e617e;
+    transition: border-top 0.3s linear 0.3s,
+                border-right 0.3s linear 0.6s,
+                border-bottom 0.3s linear 0.9s,
+                border-left 0.3s linear 1.2s;
+    /* 僅供電腦版 */
+}
+/* banner動畫 */
+.move {
+    position: relative;
+    overflow: hidden;
+}
+.move::before, .move::after {
+    content: ""; /* before, after一定要寫content 否則不能套用 */
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    background: transparent repeat;
+    opacity: 0.2;
+    /* animation設定 */
+    animation-name: move; /*動畫名稱 */
+    animation-timing-function: linear; /* 動畫速度曲線 */
+    animation-iteration-count: infinite; /* 動畫重複次數 */
+    animation-duration: 6s; /* 動畫時間 */
+}
+.move.pic::before, .move.pic::after {
+    content: "";
+    background-image: url(../images/move-img.png);
+}
+@keyframes move {
+    /* 關鍵影格 */
+    from {background-position: 0 0; /* x,y 位置 */}
+    to {background-position: 0 1024px;}
+}
+.move::after {
+    animation-name: move-2;
+    opacity: 0.1;
+    animation-duration: 6s;
+}
+@keyframes move-2 {
+    from {background-position: 300px 600px;}
+    to {background-position: 0 0;}
+}
+.d-table-cell p {
+    overflow: hidden;
+    display: --webkit-box; /* chrome safari*/
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+}
+/* 套用js之後的修改 */
+.d-table-cell {
+    display: block;
+}
+.d-table-cell {
+height: 400px;
+}
+.owl-theme .owl-dots .owl-dot span {
+    width: 20px;
+    height: 5px;
+}
+.owl-theme .owl-dots .owl-dot.active span {
+    background: #2f4858;
+}
+@media (max-width: 880px) {
+    header div{
+        width: 100% !important;
+        clip-path: inset(20% 10% 20% 10%);
+    }
+    .d-table-row {
+        position: relative;
+    }
+    #table-1 .owl-carousel .owl-nav.disabled {
+        display: block;
+        position: absolute;
+        top: calc(100% / 2 - 50px);
+        width: 100%;
+        font-size: 50px;
+        color: #2f4858;
+    }
+    #table-1 .owl-prev {
+        position: absolute;
+        left: 0;
+    }
+    #table-1 .owl-next {
+        position: absolute;
+        right: 0;
+    }
+    #table-1 .owl-dots {
+        display: none;
+    }
+    h3 br {
+        display: none;
+    }
+
+}
+@media (max-width: 576px) {
+    header div {
+        clip-path: circle(31.4% at 42% 34%);
+    }
+    footer br {
+        display: block;
+    }
+    footer span {
+        display: none;
+    }
+    footer {
+        line-height: 1.6;
+    }
+}
+@media (max-width: 539px) {
+    h3 br {
+        display: block;
+    }
+}
